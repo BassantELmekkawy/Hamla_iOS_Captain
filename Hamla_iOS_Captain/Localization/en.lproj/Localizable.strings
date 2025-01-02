@@ -156,7 +156,7 @@
 "Bank_accounts" = "Bank accounts";
 "STC_account" = "STC account";
 "Help_center" = "Help center";
-"Cannot_log_out_while_on_order" = "Cannot log out while on order";
+"Cannot_log_out_while_on_order" = "You can't log out, You have running order!";
 
 
 // MARK: - Order History
