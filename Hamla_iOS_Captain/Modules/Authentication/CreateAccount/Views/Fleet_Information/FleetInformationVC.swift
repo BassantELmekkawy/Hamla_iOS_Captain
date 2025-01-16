@@ -264,20 +264,12 @@ extension FleetInformationVC: PhotoActionSheetDelegate {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             return
         }
-        
         imageCollection[tag].image = image
-        activityIndicator = UIActivityIndicatorView()
-        activityIndicator?.style = .medium
-        activityIndicator?.color = .lightGray
-        activityIndicator?.center = imageCollection[tag].center
-        imageCollection[tag].addSubview(activityIndicator!)
         
         viewModel?.uploadImageToserver(file: imageData, tag: tag, progressHandler: { progress in
-            self.activityIndicator?.startAnimating()            
             self.overlayView = UIView(frame: self.imageCollection[self.tag].bounds)
             self.overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.imageCollection[self.tag].addSubview(self.overlayView ?? UIView())
-            self.imageCollection[self.tag].addSubview(self.activityIndicator!)
         })
     }
 }
