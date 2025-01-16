@@ -85,8 +85,11 @@ class MyProfileVC: UIViewController {
     }
     
     func setupView() {
-        let url = URL(string: captainDetails.avatar ?? "")
-        photo.kf.setImage(with: url, placeholder: UIImage(systemName: "person.fill")?.withTintColor(UIColor(named: "primary") ?? .blue, renderingMode: .alwaysOriginal))
+        
+        if let url = URL(string: captainDetails.avatar ?? "") {
+            photo.kf.setImage(with: url, placeholder: UIImage(systemName: "person.fill")?.withTintColor(UIColor(named: "primary") ?? .blue, renderingMode: .alwaysOriginal))
+        }
+
         trips.text = String(captainDetails.ordersCount ?? 0)
         inWallet.text = String(captainDetails.walletBalance ?? 0)
         rating.text = "\(captainDetails.rate ?? 5)/5"
@@ -163,8 +166,8 @@ class MyProfileVC: UIViewController {
     }
     
     @IBAction func updateProfilePhoto(_ sender: Any) {
-//        pickerVC.delegate = self
-//        pickerVC.showActionSheet(from: self)
+        pickerVC.delegate = self
+        pickerVC.showActionSheet(from: self)
     }
     
     @IBAction func updateProfile(_ sender: Any) {
