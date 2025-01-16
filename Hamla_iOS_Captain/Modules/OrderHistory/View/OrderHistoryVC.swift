@@ -66,7 +66,7 @@ class OrderHistoryVC: UIViewController {
 
     
     @IBAction func segmentValueChanged(_ sender: CustomSegmentedControl) {
-        
+        resetTableView()
         switch sender.selectedSegmentIndex{
         case 0:
             selectedState = .current
@@ -80,8 +80,11 @@ class OrderHistoryVC: UIViewController {
         default:
             selectedState = .current
         }
-        
-        orderHistoryTable.reloadData()
+    }
+    
+    private func resetTableView(){
+        self.orders = []
+        self.orderHistoryTable.reloadData()
     }
     
 }
