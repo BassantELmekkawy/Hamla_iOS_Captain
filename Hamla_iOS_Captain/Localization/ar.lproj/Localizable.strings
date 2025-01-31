@@ -183,3 +183,9 @@
 // MARK: - Settings
 "Language" = "اللغة";
 "Change_the_language_of_the_app" = "تغيير لغة التطبيق.";
+
+// MARK: - Current Request 
+"confirm_end_order" = "تأكيد إنهاء الطلب";
+"far_from_dropoff" = "أنت بعيد جدًا عن موقع التسليم! هل أنت متأكد أنك تريد إنهاء هذا الطلب؟";
+"cancel" = "إلغاء";
+"yes" = "نعم";

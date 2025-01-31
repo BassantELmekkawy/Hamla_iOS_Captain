@@ -19,6 +19,31 @@ extension UIViewController: UIAlertViewDelegate{
         
     }
     
+    
+    func showAlertWithCancel(message: String,
+                             title: String? = nil,
+                             okTitle: String = "OK",
+                             cancelTitle: String = "Cancel",
+                             okAction: (() -> Void)? = nil,
+                             cancelAction: (() -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: okTitle, style: .default) { _ in
+            okAction?()
+        }
+        let cancelButton = UIAlertAction(title: cancelTitle, style: .cancel) { _ in
+            cancelAction?()
+        }
+        
+        alert.addAction(okButton)
+        alert.addAction(cancelButton)
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 class AlertManager {

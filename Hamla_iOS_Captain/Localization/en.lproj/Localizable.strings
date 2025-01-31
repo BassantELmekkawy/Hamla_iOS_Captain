@@ -190,3 +190,9 @@
 
 "Language" = "Language";
 "Change_the_language_of_the_app" = "Change the language of the app.";
+
+// MARK: - Current Request
+"confirm_end_order" = "Confirm End Order";
+"far_from_dropoff" = "You are so far from the drop-off location! Are you sure you want to end this order?";
+"cancel" = "Cancel";
+"yes" = "Yes";

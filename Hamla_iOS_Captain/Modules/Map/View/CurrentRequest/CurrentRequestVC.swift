@@ -87,6 +87,31 @@ class CurrentRequestVC: UIViewController {
 //        } else {
 //            nextStatusIndex = index
 //        }
+        
+       addStatusBarAction()
+    }
+
+    
+    private func addStatusBarAction(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(statusBarTapped))
+        statusBar.addGestureRecognizer(tapGesture)
+        statusBar.isUserInteractionEnabled = true  // Ensure interaction is enabled
+    }
+    
+    
+    @objc private func statusBarTapped() {
+        print("Status bar tapped!")
+        
+        switch status{
+        case .endUnload:
+            self.showAlertWithCancel(message: "far_from_dropoff".localized ,
+                                     title: "confirm_end_order".localized ,
+                                     okTitle: "yes".localized ,
+                                     cancelTitle: "cancel".localized)
+            
+        default :
+            print(status.rawValue)
+        }
     }
     
     func configureNotificationView() {
