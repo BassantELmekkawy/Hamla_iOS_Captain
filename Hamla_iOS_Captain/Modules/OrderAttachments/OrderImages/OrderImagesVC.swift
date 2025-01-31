@@ -107,15 +107,20 @@ extension OrderImagesVC: PhotoActionSheetDelegate {
               let indexPath = indexPath else {
             return
         }
-        images[indexPath.item] = image
-        imagesCollectionView.reloadItems(at: [indexPath])
-        viewModel.uploadImageToserver(file: imageData, tag: indexPath.row)
-        loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        loadingIndicator?.hidesWhenStopped = true
-        loadingIndicator?.style = .large
-        loadingIndicator?.color = .lightGray
-        loadingIndicator?.center = imagesCollectionView.cellForItem(at: indexPath)!.center
-        imagesCollectionView.cellForItem(at: indexPath)?.addSubview(loadingIndicator!)
-        loadingIndicator?.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            guard let self = self, let cell = self.imagesCollectionView.cellForItem(at: indexPath) else { return }
+            
+            images[indexPath.item] = image
+            imagesCollectionView.reloadItems(at: [indexPath])
+            viewModel.uploadImageToserver(file: imageData, tag: indexPath.row)
+            loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+            loadingIndicator?.hidesWhenStopped = true
+            loadingIndicator?.style = .large
+            loadingIndicator?.color = .lightGray
+            loadingIndicator?.center = imagesCollectionView.cellForItem(at: indexPath)!.center
+            imagesCollectionView.cellForItem(at: indexPath)?.addSubview(loadingIndicator!)
+            loadingIndicator?.startAnimating()
+        }
     }
 }
